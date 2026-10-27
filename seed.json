@@ -1,0 +1,38 @@
+{
+  "seed": "2026-11-04",
+  "totalFontsInPool": 1958,
+  "domain": "antrean puskesmas",
+  "layout": "papan pengumuman penuh stiker",
+  "reference": "tiket bus antarkota",
+  "constraint": "tanpa shadow dan gradient",
+  "motion": {
+    "camera": "zoom in saat scroll lalu pan kanan",
+    "marquee": "marquee ikon SVG + teks",
+    "text": "variable font axis animasi",
+    "input": "cursor senter/spotlight mask",
+    "reveal": "curtain wipe antar section"
+  },
+  "icons": {
+    "style": "pixel-art",
+    "source": "Material Symbols"
+  },
+  "fonts": {
+    "display": "Teachers",
+    "body": "Biryani",
+    "accent": "Source Code Pro"
+  },
+  "palette": {
+    "mode": "light",
+    "harmony": "analogous",
+    "baseHue": 136,
+    "bg": "oklch(0.95 0.045 136)",
+    "surface": "oklch(0.90 0.040 136)",
+    "text": "oklch(0.20 0.040 136)",
+    "muted": "oklch(0.45 0.030 136)",
+    "accent": "oklch(0.61 0.190 166)",
+    "accent2": "oklch(0.64 0.169 106)",
+    "pop": "oklch(0.87 0.233 333)",
+    "note": "Draf. Wajib cek kontras AA dan rapikan lightness/chroma."
+  },
+  "buildDate": "2026-10-27"
+}

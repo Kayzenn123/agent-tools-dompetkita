@@ -1,0 +1,62 @@
+---
+// DompetKita — token warna & font (STARTER-GUIDE v4 ATURAN 3).
+// Palet: light / analogous hue 136, dari seed 2026-11-04, lightness
+// disetel ulang agar kontras WCAG AA lolos (lihat BRIEF.md).
+// Font: Teachers (display, variable) / Biryani (body) / Source Code Pro (aksen mono).
+// Dikonfigurasi di astro.config.ts lewat Astro Fonts API (fontsource).
+---
+
+<style is:inline>
+  :root {
+    --aw-font-sans: var(--font-biryani);
+    --aw-font-serif: var(--font-teachers);
+    --aw-font-heading: var(--font-teachers);
+
+    /* Token DompetKita (v5 ATURAN 3) */
+    --bg: #e9f2e3;
+    --surface: #dcead2;
+    --surface-2: #cfdfc0;
+    --text: #122b16;
+    --muted: #4a6b4f;
+    --accent: #1e7a4c;
+    --accent-2: #5a8f2a;
+    --pop: #d42a5e;
+    --line: #122b16;
+
+    --aw-color-primary: rgb(30 122 76);
+    --aw-color-secondary: rgb(90 143 42);
+    --aw-color-accent: rgb(212 42 94);
+
+    --aw-color-text-heading: rgb(18 43 22);
+    --aw-color-text-default: rgb(18 43 22);
+    --aw-color-text-muted: rgb(74 107 79 / 100%);
+    --aw-color-bg-page: rgb(233 242 227);
+
+    --aw-color-bg-page-dark: rgb(18 43 22);
+
+    ::selection {
+      background-color: rgb(212 42 94);
+      color: rgb(255 255 255);
+    }
+  }
+
+  .dark {
+    --aw-font-sans: var(--font-biryani);
+    --aw-font-serif: var(--font-teachers);
+    --aw-font-heading: var(--font-teachers);
+
+    --aw-color-primary: rgb(30 122 76);
+    --aw-color-secondary: rgb(90 143 42);
+    --aw-color-accent: rgb(212 42 94);
+
+    --aw-color-text-heading: rgb(233 242 227);
+    --aw-color-text-default: rgb(233 242 227);
+    --aw-color-text-muted: rgb(220 234 210 / 80%);
+    --aw-color-bg-page: rgb(18 43 22);
+
+    ::selection {
+      background-color: rgb(212 42 94);
+      color: rgb(255 255 255);
+    }
+  }
+</style>

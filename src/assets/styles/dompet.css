@@ -1,0 +1,238 @@
+/* DompetKita — gaya loket. Constraint seed: TANPA shadow dan gradient
+   (sebagai dekorasi). Satu-satunya pengecualian adalah mask spotlight
+   (motion D dari seed) dan lubang perforasi karcis yang dibuat dari
+   lingkaran solid, bukan gradasi warna. */
+
+/* Stiker diputar 1° — sudutnya menjorok keluar viewport di HP.
+   overflow-x: clip di html/body memotongnya tanpa membuat scroll
+   horizontal; sudah dites tidak merusak IntersectionObserver. */
+html, body { overflow-x: clip; }
+
+/* ---------- aksesibilitas dasar ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  background: var(--pop);
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  border: 2px solid var(--line);
+  transition: top 150ms ease-out;
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 3px solid var(--pop);
+  outline-offset: 2px;
+}
+
+/* ---------- papan pengumuman: garis tipis berulang ---------- */
+.board-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 47px,
+    rgb(18 43 22 / 0.08) 47px,
+    rgb(18 43 22 / 0.08) 48px
+  );
+}
+
+/* ---------- stiker: ditempel miring, tanpa shadow ---------- */
+.sticker {
+  border: 2px solid var(--line);
+  background: var(--surface);
+  rotate: var(--tilt, -1deg);
+}
+.sticker:nth-child(even) { --tilt: 1.2deg; }
+
+/* ---------- karcis: border tegas + perforasi (lubang solid, bukan gradien) ---------- */
+.karcis {
+  position: relative;
+  border: 2px solid var(--line);
+  background: #fffdf5;
+}
+.karcis::before,
+.karcis::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  border-radius: 9999px;
+  background: var(--bg);
+  border: 2px solid var(--line);
+}
+.karcis::before { left: -12px; }
+.karcis::after { right: -12px; }
+.karcis-divider {
+  border-top: 2px dashed var(--line);
+}
+
+/* ---------- stempel LUNAS ---------- */
+.stempel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--pop);
+  color: var(--pop);
+  border-radius: 9999px;
+  font-family: var(--font-source-code-pro), monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transform: rotate(-8deg) scale(0);
+  transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.stempel.on { transform: rotate(-8deg) scale(1); }
+
+/* ---------- marquee: 2 band, tanpa gradien ---------- */
+.marquee-band {
+  overflow: hidden;
+  border-top: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  white-space: nowrap;
+}
+.marquee-track {
+  display: inline-block;
+  padding-left: 0;
+  animation: marquee-move 28s linear infinite;
+  will-change: transform;
+}
+.marquee-band.band-2 .marquee-track { animation-duration: 36s; animation-direction: reverse; }
+.marquee-band.paused .marquee-track { animation-play-state: paused; }
+@keyframes marquee-move {
+  from { transform: translateX(0) skewX(var(--marquee-skew, 0deg)); }
+  to { transform: translateX(-50%) skewX(var(--marquee-skew, 0deg)); }
+}
+
+/* ---------- judul flip per huruf ---------- */
+.flip-letter {
+  display: inline-block;
+  transform: rotateX(90deg);
+  opacity: 0;
+  animation: flip-in 500ms cubic-bezier(0.2, 0, 0, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+@keyframes flip-in {
+  to { transform: rotateX(0); opacity: 1; }
+}
+
+/* ---------- judul display: sumbu wght variabel (Teachers) ---------- */
+.hero-title {
+  font-family: var(--font-teachers), cursive;
+  font-variation-settings: 'wght' var(--hero-wght, 620);
+  line-height: 0.95;
+}
+
+/* ---------- kamera: zoom + pan saat scroll ---------- */
+.board-zoom {
+  transform: scale(var(--zoom, 1)) translateX(var(--pan, 0px));
+  transform-origin: 50% 0%;
+  will-change: transform;
+}
+
+/* ---------- curtain wipe antar section ---------- */
+.wipe {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 600ms cubic-bezier(0.2, 0, 0, 1);
+}
+.wipe.in-view { clip-path: inset(0 0 0 0); }
+
+/* ---------- spotlight kursor (pointer: fine saja) ---------- */
+#spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 255 255 / 0.35),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+#spotlight.on { opacity: 1; }
+
+/* ---------- toast ---------- */
+#toast.show { opacity: 1; }
+
+/* ---------- animasi sobek karcis ---------- */
+.karcis.tearing {
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+  transform: translateY(-6px) rotate(2deg);
+  opacity: 0;
+  transition: clip-path 350ms ease-in, transform 350ms ease-in, opacity 350ms ease-in;
+}
+
+/* ---------- tombol & input: feedback mikro ---------- */
+.btn-loket {
+  min-height: 44px;
+  transition: transform 120ms ease-out, background-color 150ms ease-out;
+}
+
+/* Radio 0×0: tetap bisa difokuskan keyboard, label yang jadi target sentuh (44px).
+   sr-only (1×1) dihitung qa.js sebagai target sentuh gagal. */
+.radio-nol {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+label:has(.radio-nol:focus-visible) {
+  outline: 3px solid var(--pop);
+  outline-offset: 2px;
+}
+
+/* Target sentuh header/footer template: tautan teksnya hanya ~25px tingginya. */
+header a, footer a {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-loket:hover { transform: translateY(-1px); }
+.btn-loket:active { transform: scale(0.97); }
+.btn-loket:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+
+input, select, textarea { font-size: 16px; } /* cegah zoom iOS */
+.field-error {
+  border-color: var(--pop) !important;
+  animation: shake 400ms ease-in-out;
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* ---------- nomor antrean: pin paku ---------- */
+.pin {
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: var(--pop);
+  border: 2px solid var(--line);
+}
+
+/* ---------- MODE RINGAN + reduced motion: matikan gerak besar ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .flip-letter,
+  .stempel,
+  .wipe,
+  .board-zoom { animation: none !important; transition: none !important; }
+  .flip-letter { opacity: 1; transform: none; }
+  .wipe { clip-path: none; }
+  #spotlight { display: none; }
+}
+body.mode-ringan .marquee-track { animation-play-state: paused; }
+body.mode-ringan .board-zoom { transform: none !important; }
+body.mode-ringan #spotlight { display: none; }
+body.mode-ringan .flip-letter { animation: none; opacity: 1; transform: none; }
+body.mode-ringan .wipe { transition: none; clip-path: none; }
+body.gerak-mati .marquee-track { animation-play-state: paused; }
+body.gerak-mati #spotlight { display: none; }
+body.gerak-mati .board-zoom { transform: none !important; }

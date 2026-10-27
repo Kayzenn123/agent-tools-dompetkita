@@ -1,0 +1,40 @@
+site:
+  name: DompetKita
+  site: 'https://kayzenn123.github.io'
+  base: '/agent-tools-dompetkita'
+  trailingSlash: false
+
+# Default SEO metadata
+metadata:
+  title:
+    default: DompetKita — Loket Latihan Dompet Kripto untuk Pemula
+    template: '%s — DompetKita'
+  description: 'DompetKita adalah loket latihan dompet kripto berbahasa Indonesia. Kirim, terima, dan hitung biaya pakai uang contoh — tanpa risiko kehilangan uang sungguhan.'
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: DompetKita
+    images:
+      - url: '~/assets/images/og-image.png'
+        width: 1200
+        height: 630
+    type: website
+  twitter:
+    cardType: summary_large_image
+
+i18n:
+  language: id
+  textDirection: ltr
+
+apps:
+  blog:
+    isEnabled: false
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: null # or "G-XXXXXXXXXX"
+
+ui:
+  theme: 'light:only'
