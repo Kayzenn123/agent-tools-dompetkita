@@ -60,7 +60,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
   </div>
 
   <!-- Marquee band 1 -->
-  <div class="marquee-band bg-[var(--accent)] text-white" role="region" aria-label="Pengumuman loket">
+  <div class="marquee-band bg-[var(--loket)] text-white" role="region" aria-label="Pengumuman loket">
     <div class="marquee-track font-mono text-sm font-bold tracking-wide py-2">
       <span>{marqueeItem(MARQUEE_1)}</span><span aria-hidden="true">{marqueeItem(MARQUEE_1)}</span>
     </div>
@@ -112,7 +112,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
               Rp250.000
             </p>
             <ul id="saldo-rincian" class="mt-3 max-w-md text-sm"></ul>
-            <p class="mt-3 text-sm text-[var(--muted)]">
+            <p class="mt-3 text-sm text-[var(--redup)]">
               Harga BTC/ETH di sini <strong>contoh</strong>, bukan harga pasar. Saldo tersimpan di browser kamu sendiri.
             </p>
           </div>
@@ -132,7 +132,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <div class="mt-5 flex flex-wrap gap-3">
           <a
             href="#kirim"
-            class="btn-loket inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--accent)] px-5 py-3 font-bold text-white"
+            class="btn-loket inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--loket)] px-5 py-3 font-bold text-white"
           >
             <Icon name="tabler:send" class="h-5 w-5" aria-hidden="true" /> Kirim uang contoh
           </a>
@@ -176,7 +176,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         </svg>
         <div>
           <h2 class="font-heading text-3xl font-bold sm:text-4xl">Kirim uang contoh</h2>
-          <p class="mt-1 text-[var(--muted)]">Pilih orangnya, tulis jumlahnya, lihat ongkosnya — baru tempel stempel.</p>
+          <p class="mt-1 text-[var(--redup)]">Pilih orangnya, tulis jumlahnya, lihat ongkosnya — baru tempel stempel.</p>
         </div>
       </div>
 
@@ -186,7 +186,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
           <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Pilih kontak">
             {
               KONTAK.map((k, i) => (
-                <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--accent)] has-checked:text-white">
+                <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--loket)] has-checked:text-white">
                   <input type="radio" name="kontak" value={k.nama} checked={i === 0} class="radio-nol" />
                   <span>{k.pendek}</span>
                   <span class="hidden font-normal sm:inline">· {k.peran}</span>
@@ -220,7 +220,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
               class="mt-1 w-full border-2 border-[var(--line)] bg-white px-3 py-3 font-mono"
               aria-describedby="jumlah-bantuan"
             />
-            <p id="jumlah-bantuan" class="mt-1 text-sm text-[var(--muted)]">Pakai titik untuk desimal, contoh: 0.001</p>
+            <p id="jumlah-bantuan" class="mt-1 text-sm text-[var(--redup)]">Pakai titik untuk desimal, contoh: 0.001</p>
           </div>
         </div>
 
@@ -229,7 +229,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
           <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Pilih kecepatan">
             {
               SPEEDS.map((s, i) => (
-                <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--accent)] has-checked:text-white">
+                <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--loket)] has-checked:text-white">
                   <input type="radio" name="kecepatan" value={s.id} checked={i === 1} class="radio-nol" />
                   <span>{s.nama}</span>
                   <span class="font-mono font-normal">· {s.waktu}</span>
@@ -251,7 +251,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <button
           id="btn-kirim"
           type="submit"
-          class="btn-loket mt-5 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--accent)] px-6 py-3 font-bold text-white"
+          class="btn-loket mt-5 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--loket)] px-6 py-3 font-bold text-white"
         >
           <Icon name="tabler:ticket" class="h-5 w-5" aria-hidden="true" /> Tempel stempel &amp; kirim
         </button>
@@ -263,14 +263,14 @@ const marqueeItem = (teks: string) => teks.repeat(4);
           <div class="flex items-start justify-between gap-3">
             <div>
               <p class="font-mono text-sm font-bold tracking-wide"><span id="karcis-no">DK-000000</span> · CONTOH</p>
-              <p id="karcis-waktu" class="font-mono text-xs text-[var(--muted)]"></p>
+              <p id="karcis-waktu" class="font-mono text-xs text-[var(--redup)]"></p>
             </div>
             <span id="stempel-karcis" class="stempel px-2 py-1 text-xs">LUNAS</span>
           </div>
           <div class="karcis-divider my-3"></div>
           <p id="karcis-pihak" class="text-lg font-bold"></p>
           <p id="karcis-jumlah" class="font-mono text-3xl font-bold text-[var(--pop)]"></p>
-          <p id="karcis-biaya" class="mt-1 font-mono text-sm text-[var(--muted)]"></p>
+          <p id="karcis-biaya" class="mt-1 font-mono text-sm text-[var(--redup)]"></p>
           <div class="mt-4 flex flex-wrap gap-2">
             <button id="btn-salin-karcis" type="button" class="btn-loket border-2 border-[var(--line)] bg-[var(--surface)] px-3 py-2 text-sm font-bold">
               Salin karcis
@@ -291,21 +291,21 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <Icon name="tabler:arrow-down-left" class="h-8 w-8 shrink-0" aria-hidden="true" />
         <div>
           <h2 class="font-heading text-3xl font-bold sm:text-4xl">Terima uang contoh</h2>
-          <p class="mt-1 text-[var(--muted)]">Ini alamat dompet latihanmu. Bagikan ke temanmu — tapi ingat, ini alamat contoh, bukan alamat sungguhan.</p>
+          <p class="mt-1 text-[var(--redup)]">Ini alamat dompet latihanmu. Bagikan ke temanmu — tapi ingat, ini alamat contoh, bukan alamat sungguhan.</p>
         </div>
       </div>
       <div class="mt-5 overflow-x-auto border-2 border-[var(--line)] bg-white p-4">
         <code id="alamat-saya" class="font-mono text-sm font-bold break-all sm:text-base">memuat alamat…</code>
       </div>
       <div class="mt-4 flex flex-wrap gap-3">
-        <button id="btn-salin-alamat" type="button" class="btn-loket inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--accent)] px-5 py-3 font-bold text-white">
+        <button id="btn-salin-alamat" type="button" class="btn-loket inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--loket)] px-5 py-3 font-bold text-white">
           <Icon name="tabler:copy" class="h-5 w-5" aria-hidden="true" /> Salin alamat
         </button>
         <button id="btn-bagikan-alamat" type="button" class="btn-loket inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-white px-5 py-3 font-bold">
           <Icon name="tabler:share" class="h-5 w-5" aria-hidden="true" /> Bagikan sebagai teks
         </button>
       </div>
-      <p class="mt-3 text-sm text-[var(--muted)]">
+      <p class="mt-3 text-sm text-[var(--redup)]">
         Alamat boleh dibagikan ke siapa saja. Yang <strong>tidak boleh</strong> dibagikan adalah seed phrase — baca pelajaran 4 di bawah.
       </p>
     </div>
@@ -318,7 +318,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <Icon name="tabler:calculator" class="h-8 w-8 shrink-0" aria-hidden="true" />
         <div>
           <h2 class="font-heading text-3xl font-bold sm:text-4xl">Kalkulator ongkos tol</h2>
-          <p class="mt-1 text-[var(--muted)]">Hitung dulu sebelum kirim — jangan sampai ongkosnya lebih besar dari kirimannya.</p>
+          <p class="mt-1 text-[var(--redup)]">Hitung dulu sebelum kirim — jangan sampai ongkosnya lebih besar dari kirimannya.</p>
         </div>
       </div>
       <div class="mt-5 grid gap-5 sm:grid-cols-2">
@@ -338,7 +338,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <div class="mt-2 flex flex-wrap gap-2" role="group" aria-label="Pilih kecepatan kalkulator">
           {
             SPEEDS.map((s, i) => (
-              <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--accent)] has-checked:text-white">
+              <label class="btn-loket inline-flex min-h-[44px] cursor-pointer items-center gap-2 border-2 border-[var(--line)] bg-white px-3 py-2 font-bold has-checked:bg-[var(--loket)] has-checked:text-white">
                 <input type="radio" name="kalk-kecepatan" value={s.id} checked={i === 1} class="radio-nol" />
                 <span>{s.nama}</span>
                 <span class="font-mono font-normal">· {s.waktu}</span>
@@ -362,7 +362,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
         <Icon name="tabler:book" class="h-8 w-8 shrink-0" aria-hidden="true" />
         <div>
           <h2 class="font-heading text-3xl font-bold sm:text-4xl">Belajar di bangku loket</h2>
-          <p class="mt-1 text-[var(--muted)]">Lima pelajaran singkat, bahasa sehari-hari. Baca, tandai, lalu uji di kuis.</p>
+          <p class="mt-1 text-[var(--redup)]">Lima pelajaran singkat, bahasa sehari-hari. Baca, tandai, lalu uji di kuis.</p>
         </div>
       </div>
 
@@ -372,7 +372,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
           <p class="font-mono text-sm">Pak Loket mengawasi 👀 — eh, tidak pakai emoji. Pak Loket mengawasi.</p>
         </div>
         <div class="mt-2 h-4 border-2 border-[var(--line)] bg-white" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-label="Kemajuan belajar">
-          <div id="belajar-progress-bar" class="h-full bg-[var(--accent)] transition-all duration-300" style="width:0%"></div>
+          <div id="belajar-progress-bar" class="h-full bg-[var(--loket)] transition-all duration-300" style="width:0%"></div>
         </div>
       </div>
 
@@ -399,7 +399,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
       <!-- Kuis -->
       <form id="form-kuis" class="mt-8 border-t-2 border-dashed border-[var(--line)] pt-6">
         <h3 class="font-heading text-2xl font-bold">Kuis Pak Loket — 5 soal</h3>
-        <p class="mt-1 text-[var(--muted)]">Jawab semuanya, lalu tekan periksa. Penjelasan muncul di tiap soal.</p>
+        <p class="mt-1 text-[var(--redup)]">Jawab semuanya, lalu tekan periksa. Penjelasan muncul di tiap soal.</p>
         <div class="mt-4 grid gap-4">
           {
             KUIS.map((soal, i) => (
@@ -420,7 +420,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
             ))
           }
         </div>
-        <button type="submit" class="btn-loket mt-5 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--accent)] px-6 py-3 font-bold text-white">
+        <button type="submit" class="btn-loket mt-5 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--loket)] px-6 py-3 font-bold text-white">
           <Icon name="tabler:check" class="h-5 w-5" aria-hidden="true" /> Periksa jawaban
         </button>
         <div id="kuis-hasil" class="mt-4 border-2 border-[var(--line)] bg-white p-4" hidden>
@@ -438,7 +438,7 @@ const marqueeItem = (teks: string) => teks.repeat(4);
           <Icon name="tabler:history" class="h-8 w-8 shrink-0" aria-hidden="true" />
           <div>
             <h2 class="font-heading text-3xl font-bold sm:text-4xl">Riwayat karcis</h2>
-            <p class="mt-1 text-[var(--muted)]">Semua kirimanmu keluar sebagai karcis. Yang bertanda CONTOH adalah karcis bawaan latihan.</p>
+            <p class="mt-1 text-[var(--redup)]">Semua kirimanmu keluar sebagai karcis. Yang bertanda CONTOH adalah karcis bawaan latihan.</p>
           </div>
         </div>
         <div class="flex flex-wrap gap-2" role="group" aria-label="Filter riwayat">
@@ -451,8 +451,8 @@ const marqueeItem = (teks: string) => teks.repeat(4);
       <div id="daftar-riwayat" class="mt-6 grid gap-4 sm:grid-cols-2"></div>
       <div id="riwayat-kosong" class="mt-6 border-2 border-dashed border-[var(--line)] bg-white p-6 text-center" hidden>
         <p class="text-lg font-bold">Belum ada karcis di sini, Mas/Mbak.</p>
-        <p class="mt-1 text-[var(--muted)]">Kirim uang contoh pertama dulu — karcisnya langsung tercetak di sini.</p>
-        <a href="#kirim" class="btn-loket mt-4 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--accent)] px-5 py-3 font-bold text-white">Ke loket kirim</a>
+        <p class="mt-1 text-[var(--redup)]">Kirim uang contoh pertama dulu — karcisnya langsung tercetak di sini.</p>
+        <a href="#kirim" class="btn-loket mt-4 inline-flex min-h-[44px] items-center gap-2 border-2 border-[var(--line)] bg-[var(--loket)] px-5 py-3 font-bold text-white">Ke loket kirim</a>
       </div>
 
       <div class="mt-6 flex flex-wrap gap-3 border-t-2 border-dashed border-[var(--line)] pt-5">

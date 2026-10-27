@@ -116,9 +116,9 @@ function renderSaldo() {
     rincian.innerHTML = (Object.keys(state.balances) as AssetId[])
       .map((k) => {
         const a = assetById(k);
-        return `<li class="flex items-baseline justify-between gap-2 border-b-2 border-dashed border-[var(--line)] py-2 last:border-0">
+        return `<li class="flex items-start justify-between gap-3 border-b-2 border-dashed border-[var(--line)] py-2 last:border-0">
           <span class="font-bold">${a.nama}</span>
-          <span class="font-mono text-right">${fmtAsset(state.balances[k], k)} <span class="text-[var(--muted)]">≈ ${fmtRp(state.balances[k] * a.hargaContohRp)}</span></span>
+          <span class="text-right font-mono"><span class="block">${fmtAsset(state.balances[k], k)}</span><span class="block text-xs text-[var(--redup)]">≈ ${fmtRp(state.balances[k] * a.hargaContohRp)}</span></span>
         </li>`;
       })
       .join('');
@@ -134,14 +134,14 @@ function karcisHtml(tx: Tx): string {
     <div class="flex items-start justify-between gap-3">
       <div>
         <p class="font-mono text-sm font-bold tracking-wide">${tx.no} ${tx.contoh ? '· CONTOH' : ''}</p>
-        <p class="font-mono text-xs text-[var(--muted)]">${fmtTanggal(tx.waktu)} · ${speedById(tx.kecepatan).nama} · ${speedById(tx.kecepatan).waktu}</p>
+        <p class="font-mono text-xs text-[var(--redup)]">${fmtTanggal(tx.waktu)} · ${speedById(tx.kecepatan).nama} · ${speedById(tx.kecepatan).waktu}</p>
       </div>
       <span class="stempel on px-2 py-1 text-xs" aria-hidden="true">LUNAS</span>
     </div>
     <div class="karcis-divider my-3"></div>
     <p class="text-lg font-bold">${tx.jenis === 'kirim' ? 'Kirim ke' : 'Terima dari'} ${tx.pihak}</p>
-    <p class="font-mono text-2xl font-bold ${tx.jenis === 'kirim' ? 'text-[var(--pop)]' : 'text-[var(--accent)]'}">${tanda}${fmtAsset(tx.jumlah, tx.aset)}</p>
-    <p class="font-mono text-sm text-[var(--muted)]">Biaya jaringan: ${tx.biaya > 0 ? `${fmtAsset(tx.biaya, tx.aset)} (≈ ${fmtRp(tx.biaya * assetById(tx.aset).hargaContohRp)})` : 'Rp0 (penerimaan)'}</p>
+    <p class="font-mono text-2xl font-bold ${tx.jenis === 'kirim' ? 'text-[var(--pop)]' : 'text-[var(--loket)]'}">${tanda}${fmtAsset(tx.jumlah, tx.aset)}</p>
+    <p class="font-mono text-sm text-[var(--redup)]">Biaya jaringan: ${tx.biaya > 0 ? `${fmtAsset(tx.biaya, tx.aset)} (≈ ${fmtRp(tx.biaya * assetById(tx.aset).hargaContohRp)})` : 'Rp0 (penerimaan)'}</p>
     <div class="mt-3 flex gap-2">
       <button type="button" class="btn-loket btn-salin-karcis border-2 border-[var(--line)] bg-[var(--surface)] px-3 py-2 text-sm font-bold" data-id="${tx.id}">Salin karcis</button>
       <button type="button" class="btn-loket btn-sobek border-2 border-[var(--line)] bg-white px-3 py-2 text-sm font-bold" data-id="${tx.id}">Sobek (hapus)</button>
@@ -159,7 +159,7 @@ function renderRiwayat() {
   $$('.filter-riwayat').forEach((b) => {
     const aktif = b.dataset.filter === filterAktif;
     b.setAttribute('aria-pressed', String(aktif));
-    b.classList.toggle('bg-[var(--accent)]', aktif);
+    b.classList.toggle('bg-[var(--loket)]', aktif);
     b.classList.toggle('text-white', aktif);
   });
 }

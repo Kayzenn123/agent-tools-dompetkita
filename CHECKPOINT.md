@@ -1,1 +1,4 @@
 ide
+template
+ui
+qa
